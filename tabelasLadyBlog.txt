@@ -1,8 +1,8 @@
-CREATE DATABASE dbSistema;
+CREATE DATABASE LadyBlog;
 
-use dbSistema;
+use LadyBlog;
 
-create table User(
+create table Usuario(
 id int primary key auto_increment,
 nome varchar(255) not null,
 email varchar(255) not null,

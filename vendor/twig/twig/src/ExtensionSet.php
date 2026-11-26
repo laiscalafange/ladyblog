@@ -27,6 +27,10 @@ use Twig\Node\Expression\AbstractExpression;
 use Twig\NodeVisitor\NodeVisitorInterface;
 use Twig\TokenParser\TokenParserInterface;
 
+// Help opcache.preload discover always-needed symbols
+// @see https://github.com/php/php-src/issues/10131
+class_exists(BinaryOperatorExpressionParser::class);
+
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
@@ -59,19 +63,19 @@ final class ExtensionSet
     private $functionCallbacks = [];
     /** @var array<callable(string): (TwigFilter|false)> */
     private $filterCallbacks = [];
+    /** @var array<callable(string): (TwigTest|false)> */
+    private $testCallbacks = [];
     /** @var array<callable(string): (TokenParserInterface|false)> */
     private $parserCallbacks = [];
     private $lastModified = 0;
+    private ?string $sandboxSignature = null;
 
     public function __construct()
     {
         $this->staging = new StagingExtension();
     }
 
-    /**
-     * @return void
-     */
-    public function initRuntime()
+    public function initRuntime(): void
     {
         $this->runtimeInitialized = true;
     }
@@ -112,7 +116,48 @@ final class ExtensionSet
 
     public function getSignature(): string
     {
-        return json_encode(array_keys($this->extensions));
+        return serialize(array_keys($this->extensions));
+    }
+
+    public function getSandboxSignature(): string
+    {
+        if (null !== $this->sandboxSignature) {
+            return $this->sandboxSignature;
+        }
+
+        $signature = [
+            'tags' => [],
+            'filters' => [],
+            'functions' => [],
+            'tests' => [],
+        ];
+
+        foreach ($this->getTokenParsers() as $name => $parser) {
+            if (method_exists($parser, 'isAlwaysAllowedInSandbox') && $parser->isAlwaysAllowedInSandbox()) {
+                $signature['tags'][] = $name;
+            }
+        }
+        foreach ($this->getFilters() as $name => $filter) {
+            if (method_exists($filter, 'isAlwaysAllowedInSandbox') && $filter->isAlwaysAllowedInSandbox()) {
+                $signature['filters'][] = $name;
+            }
+        }
+        foreach ($this->getFunctions() as $name => $function) {
+            if (method_exists($function, 'isAlwaysAllowedInSandbox') && $function->isAlwaysAllowedInSandbox()) {
+                $signature['functions'][] = $name;
+            }
+        }
+        foreach ($this->getTests() as $name => $test) {
+            if (method_exists($test, 'isAlwaysAllowedInSandbox') && $test->isAlwaysAllowedInSandbox()) {
+                $signature['tests'][] = $name;
+            }
+        }
+        sort($signature['tags'], \SORT_STRING);
+        sort($signature['filters'], \SORT_STRING);
+        sort($signature['functions'], \SORT_STRING);
+        sort($signature['tests'], \SORT_STRING);
+
+        return $this->sandboxSignature = hash('sha256', serialize($signature));
     }
 
     public function isInitialized(): bool
@@ -410,7 +455,21 @@ final class ExtensionSet
             }
         }
 
+        foreach ($this->testCallbacks as $callback) {
+            if (false !== $test = $callback($name)) {
+                return $test;
+            }
+        }
+
         return null;
+    }
+
+    /**
+     * @param callable(string): (TwigTest|false) $callable
+     */
+    public function registerUndefinedTestCallback(callable $callable): void
+    {
+        $this->testCallbacks[] = $callable;
     }
 
     public function getExpressionParsers(): ExpressionParsers

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit19d7ca44b4cccbb8f6af407a93fcbe4f
+class ComposerStaticInit466ef7f2009b4b4cea7ff9c124cbc6e1
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -17,43 +17,43 @@ class ComposerStaticInit19d7ca44b4cccbb8f6af407a93fcbe4f
     );
 
     public static $prefixLengthsPsr4 = array (
-        'T' => 
+        'T' =>
         array (
             'Twig\\' => 5,
         ),
-        'S' => 
+        'S' =>
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
-        'E' => 
+        'E' =>
         array (
             'Etec\\TurmaAB\\' => 13,
         ),
-        'C' => 
+        'C' =>
         array (
             'CoffeeCode\\Router\\' => 18,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Twig\\' => 
+        'Twig\\' =>
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' => 
+        'Symfony\\Polyfill\\Mbstring\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'Symfony\\Polyfill\\Ctype\\' => 
+        'Symfony\\Polyfill\\Ctype\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
-        'Etec\\TurmaAB\\' => 
+        'Etec\\TurmaAB\\' =>
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
-        'CoffeeCode\\Router\\' => 
+        'CoffeeCode\\Router\\' =>
         array (
             0 => __DIR__ . '/..' . '/coffeecode/router/src',
         ),
@@ -66,9 +66,9 @@ class ComposerStaticInit19d7ca44b4cccbb8f6af407a93fcbe4f
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit19d7ca44b4cccbb8f6af407a93fcbe4f::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit19d7ca44b4cccbb8f6af407a93fcbe4f::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit19d7ca44b4cccbb8f6af407a93fcbe4f::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit466ef7f2009b4b4cea7ff9c124cbc6e1::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit466ef7f2009b4b4cea7ff9c124cbc6e1::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit466ef7f2009b4b4cea7ff9c124cbc6e1::$classMap;
 
         }, null, ClassLoader::class);
     }

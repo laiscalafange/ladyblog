@@ -143,7 +143,13 @@ class Compiler
      */
     public function string(string $value)
     {
-        $this->source .= \sprintf('"%s"', addcslashes($value, "\0\t\"\$\\"));
+        // Single quotes are encoded as \x27 (not \') as a defense-in-depth measure:
+        // it guarantees that the compiled output never contains a literal "'" derived
+        // from user input, which prevents breaking out of a surrounding single-quoted
+        // PHP context if a caller mistakenly concatenates the result into one.
+        // \' is not a recognized escape sequence in PHP double-quoted strings (the
+        // backslash would be kept literally), so \x27 is used instead.
+        $this->source .= \sprintf('"%s"', str_replace("'", '\\x27', addcslashes($value, "\0\t\"\$\\")));
 
         return $this;
     }
@@ -156,14 +162,13 @@ class Compiler
     public function repr($value)
     {
         if (\is_int($value) || \is_float($value)) {
-            if (false !== $locale = setlocale(\LC_NUMERIC, '0')) {
-                setlocale(\LC_NUMERIC, 'C');
-            }
+            // var_export() follows serialize_precision, -1 gives the shortest representation that reads back as the same float
+            $precision = \is_float($value) ? ini_set('serialize_precision', '-1') : false;
 
             $this->raw(var_export($value, true));
 
-            if (false !== $locale) {
-                setlocale(\LC_NUMERIC, $locale);
+            if (false !== $precision) {
+                ini_set('serialize_precision', $precision);
             }
         } elseif (null === $value) {
             $this->raw('null');
