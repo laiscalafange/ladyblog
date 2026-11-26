@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícias</title>
+</head>
+<body>
+    <h1>Detalhes da notícia</h1>
+    {% if noticia %}
+        <p>ID: {{ noticia.id }}</p>
+        <p>Nome: {{ noticia.titulo }}</p>
+        <p>Valor: {{ noticia.corpo }}</p>
+    {% else %}
+        <p>Notícia não encontrada.</p>
+    {% endif %}
+</body>
+</html>

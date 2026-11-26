@@ -1,0 +1,16 @@
+CREATE DATABASE dbSistema;
+
+use dbSistema;
+
+create table User(
+id int primary key auto_increment,
+nome varchar(255) not null,
+email varchar(255) not null,
+senha varchar(255) not null
+);
+
+create table Noticia(
+id int primary key auto_increment,
+titulo varchar(255) not null,
+corpo varchar(500) not null
+);

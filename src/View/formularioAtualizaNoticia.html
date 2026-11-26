@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Notícia</title>
+</head>
+
+<body>
+
+    {% if avisos %}
+    <h1>{{ avisos }}</h1>
+    {% endif %}
+
+    <form action="/admin/updateNoticia" method="post">
+
+        <label for="id">Id da notícia:</label>
+        <input type="text" id="id" name="id" required value="{{ noticia.id }}">
+        <label for="titulo">Título da notícia:</label>
+        <input type="text" id="titulo" name="titulo" required value="{{ noticia.titulo }}">
+        <label for="corpo">Notícia:</label>
+        <input type="text" id="corpo" name="corpo" required value="{{ noticia.corpo }}">
+
+
+        <button type="submit">Atualizar</button>
+    </form>
+</body>
+
+</html>

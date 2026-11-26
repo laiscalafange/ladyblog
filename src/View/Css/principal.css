@@ -1,0 +1,130 @@
+/* Corpo da página */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to bottom, #ffdde1, #ff6eb4, #ff2d95);
+    color: #4f2525;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabeçalho */
+.site-header {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.site-header .header-content {
+    display: flex;
+    justify-content: center;  /* centraliza horizontalmente */
+    align-items: center;      /* centraliza verticalmente */
+    gap: 30px;                /* espaço entre logo e Alya */
+}
+
+.site-header .logo img {
+    max-width: 300px;
+    width: 100%;
+    display: block;
+}
+
+.site-header .foto-alya img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #ff2d95; /* borda pink viva */
+    display: block;
+}
+
+/* Menu centralizado */
+.menu-principal {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: linear-gradient(to bottom, #ff6eb4, #ff2d95);
+    padding: 10px;
+    border-radius: 15px;
+    margin: 20px auto;
+    width: fit-content;
+}
+
+.menu-principal a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.menu-principal a:hover {
+    text-decoration: underline;
+}
+
+/* Container principal */
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    width: 90%;
+    margin: 20px auto;
+}
+
+/* Sidebar */
+.sidebar {
+    height: 450px;
+    width: 220px;
+    background: linear-gradient(to bottom, #ff99c8, #ff2d95a6);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.sidebar img {
+    max-width: 100%;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Área dos posts */
+.posts {
+    width: 70%;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(255, 45, 149, 0.7);
+}
+
+.post {
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ffb6d9;
+    padding-bottom: 15px;
+}
+
+.post h2 {
+    font-size: 18px;
+    color: #e60073;
+}
+
+.post h3 {
+    font-size: 22px;
+    margin: 5px 0;
+}
+
+.post p {
+    margin-top: 10px;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    margin: 30px 0;
+}
+
+footer a {
+    color: #ff2d95;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

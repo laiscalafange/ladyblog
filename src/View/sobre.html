@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/View/Css/sobre.css">
+    <title>{{ titulo }}</title>
+</head>
+<body>
+    <h1>{{ titulo }}</h1>
+    <h3>{{ conteudo }}</h3>
+    <br><br>
+
+   <div class="desenvolvedoras">
+    {% for dev in desenvolvedoras %}
+        <div class="perfil">
+            <img src="{{ dev.foto }}">
+            <p>{{ dev.nome }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+
+
+     <p>{{ informação }}</p>
+</body>
+</html>

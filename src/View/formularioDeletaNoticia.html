@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deletar Notícia</title>
+</head>
+
+<body>
+
+    {% if avisos %}
+    <h1>{{ avisos }}</h1>
+    {% endif %}
+
+    <form action="/admin/deleteNoticia" method="post">
+         
+        <label for="id">Id da notícia:</label>
+        <input type="text" id="id" name="id" required value="{{ noticia.id }}">
+
+
+        <button type="submit">Deletar</button>
+    </form>
+</body>
+
+</html>

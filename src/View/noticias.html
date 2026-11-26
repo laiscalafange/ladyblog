@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de produtos</title>
+</head>
+
+<body>
+    {% for noticia in noticias %}
+    <p>ID: {{ noticia.id }}</p>
+    <p>Título: {{ noticia.titulo }}</p>
+    <p>Corpo: {{ noticia.corpo }}</p>
+{% endfor %}
+
+</body>
+
+</html>

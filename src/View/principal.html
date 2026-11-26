@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }}</title>
+    <link rel="stylesheet" href="src/View/Css/principal.css">
+    <link rel="icon" type="image/png" href="src/View/fotos/fotinha.png">
+</head>
+<body>
+
+
+    <header class="site-header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="src/View/fotos/ladyblog.png" alt="Ladyblog">
+            </div>
+            <div class="foto-alya">
+                <img src="src/View/fotos/ayla.png" alt="Alya">
+            </div>
+        </div>
+    </header>
+
+ 
+    <nav class="menu-principal">
+
+    <a href="sobre">Sobre</a><br>
+    <a href="formularioNovoLogin">Cadastrar</a><br>
+    <a href="login">Login</a> |
+    <a href="admin/formularioNovaNoticia">Editar noticias</a><br>
+    <a href="logout">Logout</a> 
+    </nav>
+
+ 
+    <div class="container">
+       
+        <div class="sidebar">
+    <div>             
+         <img src="src/View/fotos/ladybug.png" alt="Ladybug">
+                <br>
+                <br>
+                <img src="src/View/fotos/ladybugC.jpg" alt="Ladybug 2">
+                <br>
+                <br>
+                <img src="src/View/fotos/cat.jpg" alt="catnoir">
+               
+        </div>
+   
+</div>
+        <main class="posts">
+            {% for noticia in noticias %}
+            <div class="post">
+                <h2>{{ noticia.data }}</h2>
+                <h3>{{ noticia.titulo }}</h3>
+                <p>{{ noticia.conteudo }}</p>
+            </div>
+            {% endfor %}
+        </main>
+    </div>
+</body>
+</html>

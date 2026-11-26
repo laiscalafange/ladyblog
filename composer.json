@@ -1,0 +1,22 @@
+{
+    "name": "etec/turma_ab",
+    "description": "Programa feito pra dar aula pra turma AB",
+    "type": "project",
+    "require": {
+        "twig/twig": "^3.9",
+        "coffeecode/router": "^1.0.8"
+    },
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Etec\\TurmaAB\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "André Furlan",
+            "email": "ensismoebius@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
