@@ -17,43 +17,43 @@ class ComposerStaticInit19d7ca44b4cccbb8f6af407a93fcbe4f
     );
 
     public static $prefixLengthsPsr4 = array (
-        'T' => 
+        'T' =>
         array (
             'Twig\\' => 5,
         ),
-        'S' => 
+        'S' =>
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
-        'E' => 
+        'E' =>
         array (
             'Etec\\TurmaAB\\' => 13,
         ),
-        'C' => 
+        'C' =>
         array (
             'CoffeeCode\\Router\\' => 18,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Twig\\' => 
+        'Twig\\' =>
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' => 
+        'Symfony\\Polyfill\\Mbstring\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'Symfony\\Polyfill\\Ctype\\' => 
+        'Symfony\\Polyfill\\Ctype\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
-        'Etec\\TurmaAB\\' => 
+        'Etec\\TurmaAB\\' =>
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
-        'CoffeeCode\\Router\\' => 
+        'CoffeeCode\\Router\\' =>
         array (
             0 => __DIR__ . '/..' . '/coffeecode/router/src',
         ),

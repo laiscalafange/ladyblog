@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
-        'name' => 'etec/turma_a',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'name' => 'etec/turma_ab',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'be60b5d376df844e5e5e2dfd53ca62beb85a65ef',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -19,10 +19,10 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'etec/turma_a' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+        'etec/turma_ab' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'be60b5d376df844e5e5e2dfd53ca62beb85a65ef',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

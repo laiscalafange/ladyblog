@@ -7,13 +7,13 @@ class Database
 
     public function __construct()
     {
-        $this->conexao = new \PDO("mysql:host=localhost;dbname=dbSistema", "root", "");
+        $this->conexao = new \PDO("mysql:host=localhost;dbname=LadyBlog", "root", "");
     }
 
     function loadUser(int $id): ?User
     {
         // Prepara a instrução SQL para buscar o usuário pelo ID
-        $stmt = $this->conexao->prepare("SELECT id, nome, email, senha FROM User WHERE id = :id");
+        $stmt = $this->conexao->prepare("SELECT id, nome, email, senha FROM Usuario WHERE id = :id");
 
         $stmt->bindValue(":id", $id);
         $stmt->execute();
@@ -31,7 +31,7 @@ class Database
 
     function loadUserByEmailAndSenha(string $email, string $senha): ?User
     {
-        $stmt = $this->conexao->prepare("SELECT id, nome, email, senha FROM User WHERE email = :email");
+        $stmt = $this->conexao->prepare("SELECT id, nome, email, senha FROM Usuario WHERE email = :email");
         $stmt->bindValue(":email", $email);
         $stmt->execute();
 
@@ -48,7 +48,7 @@ class Database
         // Acessa a propriedade "conexao" do objeto
         // ($this->conexao) e prepara a instrução SQL
         // para ser executada
-        $stmt = $this->conexao->prepare("INSERT INTO User (nome, email, senha) VALUES (:nome, :email, :senha)");
+        $stmt = $this->conexao->prepare("INSERT INTO Usuario (nome, email, senha) VALUES (:nome, :email, :senha)");
 
         // Substitui os "placeholders" pelos seus
         // respectivos valores
